@@ -35,20 +35,20 @@ const Contact: React.FC = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'aman@example.com',
-      href: 'mailto:aman@example.com',
+      value: 'amansoudagar202@gmail.com',
+      href: 'mailto:amansoudagar202@gmail.com',
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      value: '+919019722243',
+      href: 'tel:+919019722243',
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'San Francisco, CA',
-      href: '#',
+      value: 'Bangalore, Karnataka, India',
+      href: 'https://maps.app.goo.gl/tiPV9zog3SLMRdnQ9',
     },
   ];
 
@@ -56,25 +56,25 @@ const Contact: React.FC = () => {
     {
       icon: Github,
       label: 'GitHub',
-      href: 'https://github.com',
+      href: 'https://github.com/beast0686/',
       color: 'hover:text-gray-900 dark:hover:text-white',
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: 'https://linkedin.com',
+      href: 'https://www.linkedin.com/in/aman-soudagar/',
       color: 'hover:text-blue-600',
     },
     {
       icon: Twitter,
       label: 'Twitter',
-      href: 'https://twitter.com',
+      href: 'https://x.com/aman_soudagar',
       color: 'hover:text-blue-400',
     },
     {
       icon: MessageCircle,
       label: 'WhatsApp',
-      href: 'https://wa.me/15551234567',
+      href: 'https://wa.me/9019722243',
       color: 'hover:text-green-500',
     },
   ];
