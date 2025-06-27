@@ -5,49 +5,16 @@ import { Briefcase, Calendar, MapPin, ArrowRight } from 'lucide-react';
 const Experience: React.FC = () => {
   const experiences = [
     {
-      title: 'Senior Full Stack Developer',
-      company: 'Google',
-      location: 'Mountain View, CA',
-      period: '2022 - Present',
+      title: 'Software Development Intern',
+      company: 'Kazunov1AI',
+      location: 'Bangalore, Karnataka',
+      period: 'June 2025 - Present',
       type: 'Full-time',
-      description: 'Leading development of scalable web applications serving millions of users daily.',
+      description: '',
       achievements: [
-        'Architected and implemented microservices infrastructure reducing system latency by 40%',
-        'Led a team of 5 developers in building next-generation user interfaces',
-        'Optimized database queries resulting in 60% improvement in application performance',
-        'Mentored junior developers and conducted technical interviews',
+        '',
       ],
-      technologies: ['React', 'Node.js', 'TypeScript', 'GCP', 'Kubernetes', 'PostgreSQL'],
-    },
-    {
-      title: 'Full Stack Developer',
-      company: 'Microsoft',
-      location: 'Seattle, WA',
-      period: '2021 - 2022',
-      type: 'Full-time',
-      description: 'Developed enterprise-level applications and cloud solutions for business clients.',
-      achievements: [
-        'Built and deployed 15+ web applications using modern JavaScript frameworks',
-        'Collaborated with cross-functional teams to deliver features on tight deadlines',
-        'Implemented automated testing strategies improving code quality by 50%',
-        'Contributed to open-source projects and internal developer tools',
-      ],
-      technologies: ['Vue.js', 'Azure', 'C#', '.NET Core', 'Docker', 'MongoDB'],
-    },
-    {
-      title: 'Software Engineering Intern',
-      company: 'Facebook (Meta)',
-      location: 'Menlo Park, CA',
-      period: 'Summer 2020',
-      type: 'Internship',
-      description: 'Worked on social media platform features and machine learning algorithms.',
-      achievements: [
-        'Developed recommendation algorithms improving user engagement by 25%',
-        'Created data visualization dashboards for product analytics team',
-        'Participated in code reviews and contributed to engineering best practices',
-        'Presented final project to senior leadership team',
-      ],
-      technologies: ['Python', 'React', 'GraphQL', 'Machine Learning', 'AWS'],
+      technologies: ['React', 'Node.js', 'TypeScript', 'AWS'],
     },
   ];
 
