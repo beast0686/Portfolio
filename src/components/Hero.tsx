@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 mb-6"
             >
-              <span className="text-blue-600 dark:text-blue-400 font-medium">👋 Welcome to my portfolio</span>
+              <span className="text-blue-600 dark:text-blue-400 font-medium">Welcome</span>
             </motion.div>
 
             <motion.h1
@@ -72,8 +72,7 @@ const Hero: React.FC = () => {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
             >
-              Full Stack Developer & Software Engineer passionate about creating innovative solutions 
-              and building exceptional digital experiences that make a difference.
+              Passionate and detail-oriented Software Engineer with a strong foundation in programming, problem-solving, and system design. Adept at collaborating in team settings, with hands-on experience from academic projects. Passionate about learning new technologies and eager to contribute to innovative software solutions. Ready to apply theoretical knowledge in real-world applications and grow within a dynamic tech environment.
             </motion.p>
 
             <motion.div
@@ -91,14 +90,16 @@ const Hero: React.FC = () => {
                 Get In Touch
               </motion.button>
               
-              <motion.button
+              <motion.a
+                href="\Resume.pdf"
+                download="Aman_Resume.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 rounded-xl font-semibold hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-all duration-300 flex items-center gap-2"
               >
                 <Download size={20} />
                 Download CV
-              </motion.button>
+              </motion.a>
             </motion.div>
 
             {/* Social Links */}
@@ -109,9 +110,9 @@ const Hero: React.FC = () => {
               className="flex gap-6 items-center justify-center lg:justify-start"
             >
               {[
-                { icon: Github, href: '#', label: 'GitHub' },
-                { icon: Linkedin, href: '#', label: 'LinkedIn' },
-                { icon: Mail, href: '#', label: 'Email' },
+                { icon: Github, href: 'https://github.com/beast0686',  label: 'GitHub' },
+                { icon: Linkedin, href: 'https://www.linkedin.com/in/aman-soudagar/', label: 'LinkedIn' },
+                { icon: Mail, href: 'mailto:amansoudagar202@gmail.com', label: 'Email' },
               ].map((social) => (
                 <motion.a
                   key={social.label}
@@ -155,7 +156,7 @@ const Hero: React.FC = () => {
                 className="relative w-80 h-80 rounded-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-gray-800 dark:to-gray-700 p-2 shadow-2xl z-10"
               >
                 <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center text-6xl">
-                  👨‍💻
+                  <img src={"files/Profile.jpg"}/>
                 </div>
               </motion.div>
             </div>
