@@ -2,58 +2,58 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const ProfileFloatingElements: React.FC = () => {
-  // Specific elements around the profile picture
-  const profileElements = [
-    { id: 1, size: 30, angle: 0, radius: 200, color: 'from-blue-400 to-cyan-400' },
-    { id: 2, size: 25, angle: 60, radius: 180, color: 'from-purple-400 to-pink-400' },
-    { id: 3, size: 35, angle: 120, radius: 220, color: 'from-green-400 to-blue-400' },
-    { id: 4, size: 20, angle: 180, radius: 160, color: 'from-yellow-400 to-orange-400' },
-    { id: 5, size: 28, angle: 240, radius: 200, color: 'from-indigo-400 to-purple-400' },
-    { id: 6, size: 32, angle: 300, radius: 190, color: 'from-pink-400 to-red-400' },
+  // Wave ring configurations
+  const waveRings = [
+    { id: 1, size: 120, delay: 0, color: 'from-blue-500/30 to-cyan-500/20' },
+    { id: 2, size: 140, delay: 0.5, color: 'from-purple-500/30 to-pink-500/20' },
+    { id: 3, size: 160, delay: 1, color: 'from-indigo-500/30 to-blue-500/20' },
   ];
 
   return (
-      <div className="absolute inset-0 pointer-events-none">
-        {profileElements.map((element, index) => (
-            <motion.div
-                key={element.id}
-                className="absolute top-1/2 left-1/2 pointer-events-auto"
-                style={{
-                  width: element.size,
-                  height: element.size,
-                }}
-                animate={{
-                  rotate: [element.angle, element.angle + 360],
-                  x: [
-                    Math.cos((element.angle * Math.PI) / 180) * element.radius,
-                    Math.cos(((element.angle + 360) * Math.PI) / 180) * element.radius,
-                  ],
-                  y: [
-                    Math.sin((element.angle * Math.PI) / 180) * element.radius,
-                    Math.sin(((element.angle + 360) * Math.PI) / 180) * element.radius,
-                  ],
-                }}
-                transition={{
-                  duration: 20 + index * 2,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                whileHover={{
-                  scale: 1.8,
-                  transition: { duration: 0.3 }
-                }}
-            >
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="relative w-24 h-24 md:w-32 md:h-32">
+          {/* Profile Picture Placeholder */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-gray-200 to-gray-300" />
+
+          {/* Wave Rings */}
+          {waveRings.map((ring) => (
               <motion.div
-                  className={`w-full h-full rounded-full bg-gradient-to-r ${element.color} opacity-20 backdrop-blur-sm border border-white/20`}
-                  whileHover={{
-                    opacity: 0.6,
-                    boxShadow: "0 0 25px rgba(59, 130, 246, 0.4)",
-                    rotate: 180,
+                  key={ring.id}
+                  className={`absolute inset-0 rounded-full bg-gradient-to-r ${ring.color} border border-white/10 pointer-events-auto`}
+                  style={{
+                    width: ring.size,
+                    height: ring.size,
+                    margin: `calc(-${ring.size / 2}px + 50%)`, // Center the rings
                   }}
-                  transition={{ duration: 0.3 }}
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.5, 0.3],
+                    rotate: [0, 360],
+                  }}
+                  transition={{
+                    duration: 4 + ring.delay,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: ring.delay,
+                    times: [0, 0.5, 1],
+                  }}
+                  whileHover={{
+                    scale: 1.3,
+                    opacity: 0.7,
+                    boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)',
+                    transition: { duration: 0.3 },
+                  }}
+                  onClick={() => {
+                    // Trigger ripple effect on click
+                    return {
+                      scale: [1.2, 1.4, 1.2],
+                      opacity: [0.7, 0.9, 0.7],
+                      transition: { duration: 0.6, times: [0, 0.5, 1] },
+                    };
+                  }}
               />
-            </motion.div>
-        ))}
+          ))}
+        </div>
       </div>
   );
 };
