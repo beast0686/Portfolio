@@ -23,3 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 .env
+/.vite/deps_temp_3d26a667/package.json
+/.vite/deps_temp_677d9f43/package.json
