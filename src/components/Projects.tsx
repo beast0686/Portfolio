@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, X, Code, Smartphone, Globe, Database } from 'lucide-react';
+import {ExternalLink, Github, X, Code, Smartphone, Globe, Database, Music} from 'lucide-react';
 
 interface Project {
   id: number;
@@ -10,7 +10,6 @@ interface Project {
   image: string;
   technologies: string[];
   githubUrl: string;
-  liveUrl: string;
   category: string;
   features: string[];
   icon: React.ElementType;
@@ -18,96 +17,73 @@ interface Project {
 
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [filter, setFilter] = useState('All');
 
   const projects: Project[] = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with real-time inventory management',
-      longDescription: 'A comprehensive e-commerce platform built with modern technologies, featuring real-time inventory management, secure payment processing, and advanced analytics dashboard.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'AWS'],
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
+      title: 'Mini Dio',
+      description: 'Meeting Minutes Generator',
+      longDescription: '',
+      image: 'https://img.freepik.com/premium-vector/businessman-presenting-business-professional-office-teamwork-animation-colleague-seminar-meeting_40876-1575.jpg?w=2000',
+      technologies: ['Python', 'Django', 'Google Cloud Speech-to-Text', 'Google GenAI', 'Tailwind CSS', 'Bootstrap', 'PostgreSQL'],
+      githubUrl: 'https://github.com/beast0686/MiniDio',
       category: 'Web',
       icon: Globe,
       features: [
-        'User authentication and authorization',
-        'Product catalog with advanced filtering',
-        'Shopping cart and checkout process',
-        'Payment integration with Stripe',
-        'Admin dashboard for inventory management',
-        'Real-time notifications',
+        'Prepared a system to generate comprehensive documentation for minutes of a meeting in markdown format.',
+        'Multilingual support with Google Cloud Speech-to-Text and also deployed on Google Cloud.',
+        'Generates minutes of meeting in a structured format with speaker diarization.',
       ],
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'Mobile-first task management application with team collaboration',
-      longDescription: 'A powerful task management application designed for teams, featuring real-time collaboration, file sharing, and progress tracking capabilities.',
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React Native', 'Firebase', 'Redux', 'Node.js'],
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
+      title: 'Beat Frame',
+      description: 'Music Video Generation Tool',
+      longDescription: '',
+      image: 'https://pictory.ai/wp-content/uploads/2024/03/Music-Video-Generator-1.png',
+      technologies: ['Python', 'Streamlit', 'Librosa', 'OpenAI Whisper', 'GPT-4o', 'Stable Diffusion', 'MoviePy'],
+      githubUrl: 'https://github.com/beast0686/Beat-Frame',
       category: 'Mobile',
-      icon: Smartphone,
+      icon: Music,
       features: [
-        'Cross-platform mobile application',
-        'Real-time task synchronization',
-        'Team collaboration features',
-        'File attachment support',
-        'Push notifications',
-        'Offline functionality',
+        'AI music-video generator that generates videos based on beat stamps.',
+        'Uses OpenAI for descriptive prompts and Stable Diffusion for high quality image generation.',
+        'Accurately generates high quality images resulting in quality content creation.',
       ],
     },
     {
       id: 3,
-      title: 'Data Analytics Dashboard',
-      description: 'Interactive dashboard for business intelligence and data visualization',
-      longDescription: 'An advanced analytics dashboard that transforms complex data into actionable insights through interactive visualizations and real-time reporting.',
-      image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Vue.js', 'D3.js', 'Python', 'FastAPI', 'MongoDB'],
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
-      category: 'Data',
+      title: 'Play Pulse',
+      description: 'Data Analysis and Prediction of Custom PCs, Gaming Laptops and Consoles',
+      longDescription: '',
+      image: 'https://www.custompc.com/wp-content/sites/custompc/2023/05/Ferns.jpg',
+      technologies: ['Python', 'Pandas', 'Numpy', 'Plotly Express', 'Plotly Graph Objects', 'Streamlit', 'Scikit-learn'],
+      githubUrl: 'https://github.com/beast0686/Play-Pulse',
+      category: '',
       icon: Database,
       features: [
-        'Interactive data visualizations',
-        'Real-time data processing',
-        'Custom report generation',
-        'Multi-user dashboards',
-        'Data export capabilities',
-        'API integration',
+        'PC, Consoles and Laptop Sales analysis and Prediction.',
+        'Dataset for the project was collected from multiple shops and showrooms in Bangalore.',
+        'Analyzed sales data contributed in the better inventory management.',
       ],
     },
     {
       id: 4,
-      title: 'AI Chat Application',
-      description: 'Intelligent chatbot with natural language processing capabilities',
-      longDescription: 'An AI-powered chat application that leverages machine learning for natural language understanding and provides intelligent responses.',
-      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Python', 'TensorFlow', 'React', 'WebSocket', 'Docker'],
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
-      category: 'AI',
-      icon: Code,
+      title: 'Meme Wizard',
+      description: 'AI Meme Generation Platform',
+      longDescription: '',
+      image: 'https://i.ytimg.com/vi/q4u4gzNFIw0/maxresdefault.jpg',
+      technologies: ['Python', 'Flask', 'HTML', 'CSS', 'JavaScript', 'MongoDB', 'Gemini API', 'Imgflip API'],
+      githubUrl: 'https://github.com/beast0686/Meme-Wizard',
+      category: '',
+      icon: Globe,
       features: [
-        'Natural language processing',
-        'Machine learning integration',
-        'Real-time messaging',
-        'Context-aware responses',
-        'Multi-language support',
-        'Analytics and insights',
+        'AI meme generator that generates memes based on sentiment analysis.',
+        'Uses Gemini and Imgflip APIs to generate both AI and existing sentiment-based memes.',
+        'Accurately captures real conversations, enabling targeted marketing and content creation.',
       ],
     },
   ];
-
-  const categories = ['All', 'Web', 'Mobile', 'Data', 'AI'];
-
-  const filteredProjects = filter === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === filter);
 
   return (
     <div className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
@@ -126,25 +102,6 @@ const Projects: React.FC = () => {
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
             A collection of my best work showcasing different technologies and problem-solving approaches.
           </p>
-
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((category) => (
-              <motion.button
-                key={category}
-                onClick={() => setFilter(category)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                  filter === category
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                    : 'bg-white/70 dark:bg-gray-800/70 text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700'
-                }`}
-              >
-                {category}
-              </motion.button>
-            ))}
-          </div>
         </motion.div>
 
         {/* Projects Grid */}
@@ -153,7 +110,7 @@ const Projects: React.FC = () => {
           className="grid md:grid-cols-2 gap-8"
         >
           <AnimatePresence>
-            {filteredProjects.map((project, index) => (
+            {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 layout
@@ -211,16 +168,6 @@ const Projects: React.FC = () => {
                     >
                       <Github size={16} />
                       Code
-                    </motion.a>
-                    <motion.a
-                      href={project.liveUrl}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-                    >
-                      <ExternalLink size={16} />
-                      Live Demo
                     </motion.a>
                   </div>
                 </div>
@@ -311,15 +258,6 @@ const Projects: React.FC = () => {
                     >
                       <Github size={20} />
                       View Code
-                    </motion.a>
-                    <motion.a
-                      href={selectedProject.liveUrl}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-200"
-                    >
-                      <ExternalLink size={20} />
-                      Live Demo
                     </motion.a>
                   </div>
                 </div>
