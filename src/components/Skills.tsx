@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Code, Database, Globe, Smartphone, Shield, Award } from 'lucide-react';
 import CertificationModal from './CertificationModal';
+import dataAnalysis from './files/Data_Analysis_with_Python_IBM.jpg';
+import dataVisualization from './files/Data_Visualization_with_Python_IBM.jpg';
+import pythonForDataScience from './files/Python_for_Data_Science_IBM.jpg';
 
 const Skills: React.FC = () => {
   const [selectedCertification, setSelectedCertification] = useState<any>(null);
@@ -51,7 +54,7 @@ const Skills: React.FC = () => {
       date: 'May 2024',
       link: 'https://courses.cognitiveclass.ai/certificates/4d8b5dac44244a8295428c23f306579b',
       description: 'Python for Data Science',
-      image: null,
+      image: pythonForDataScience,
     },
     {
       id: '2',
@@ -60,7 +63,7 @@ const Skills: React.FC = () => {
       date: 'January 2025',
       link: 'https://courses.cognitiveclass.ai/certificates/de385f5549e54a9b8dfbecd49aebb228',
       description: '',
-      image: null,
+      image: dataVisualization,
     },
     {
       id: '3',
@@ -69,7 +72,7 @@ const Skills: React.FC = () => {
       date: 'January 2025',
       link: 'https://courses.cognitiveclass.ai/certificates/d2e3a90aea674587b6335468a16a4ea1',
       description: '',
-      image: null,
+      image: dataAnalysis,
     },
   ];
 
