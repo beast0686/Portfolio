@@ -2,10 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Download, Github, Linkedin, Mail } from 'lucide-react';
 import ProfileFloatingElements from './ProfileFloatingElements';
+import Resume from './files/Aman_Resume.pdf';
+import Profile from './files/Profile.jpg';
+import { saveAs } from 'file-saver';
 
 const Hero: React.FC = () => {
   const scrollToSkills = () => {
     document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleDownloadResume = () => {
+    saveAs(Resume, 'Aman_Resume.pdf'); // Trigger download with the imported PDF
   };
 
   return (
@@ -91,14 +98,13 @@ const Hero: React.FC = () => {
               </motion.button>
               
               <motion.a
-                href="\Resume.pdf"
-                download="Aman_Resume.pdf"
+                onClick={handleDownloadResume} // Trigger download on click
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 rounded-xl font-semibold hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-all duration-300 flex items-center gap-2"
+                className="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 rounded-xl font-semibold hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-all duration-300 flex items-center gap-2 cursor-pointer"
               >
                 <Download size={20} />
-                Download CV
+                Download Resume
               </motion.a>
             </motion.div>
 
@@ -110,7 +116,7 @@ const Hero: React.FC = () => {
               className="flex gap-6 items-center justify-center lg:justify-start"
             >
               {[
-                { icon: Github, href: 'https://github.com/beast0686',  label: 'GitHub' },
+                { icon: Github, href: 'https://github.com/beast0686', label: 'GitHub' },
                 { icon: Linkedin, href: 'https://www.linkedin.com/in/aman-soudagar/', label: 'LinkedIn' },
                 { icon: Mail, href: 'mailto:amansoudagar202@gmail.com', label: 'Email' },
               ].map((social) => (
@@ -156,7 +162,7 @@ const Hero: React.FC = () => {
                 className="relative w-80 h-80 rounded-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-gray-800 dark:to-gray-700 p-2 shadow-2xl z-10"
               >
                 <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center text-6xl">
-                  <img src={"files/Profile.jpg"}/>
+                  <img src={Profile} alt="Profile Picture" className="w-full h-full object-cover rounded-full" />
                 </div>
               </motion.div>
             </div>
