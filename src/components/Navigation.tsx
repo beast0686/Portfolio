@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, Volume2, VolumeX } from 'lucide-react';
+import { useSoundEffects } from './effects/SoundProvider';
+import GlowingBorder from './effects/GlowingBorder';
 
 interface NavigationProps {
   darkMode: boolean;
@@ -15,6 +17,8 @@ const Navigation: React.FC<NavigationProps> = ({
   isMenuOpen,
   toggleMenu,
 }) => {
+  const { isSoundEnabled, toggleSound, playClick, playHover } = useSoundEffects();
+
   const navItems = [
     { href: '#home', label: 'Home' },
     { href: '#skills', label: 'Skills' },
@@ -27,6 +31,7 @@ const Navigation: React.FC<NavigationProps> = ({
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
+      playClick();
       element.scrollIntoView({ behavior: 'smooth' });
       toggleMenu(); // Close mobile menu
     }
@@ -58,38 +63,84 @@ const Navigation: React.FC<NavigationProps> = ({
                   onClick={() => scrollToSection(item.href)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onHoverStart={playHover}
                   className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
                 >
                   {item.label}
                 </motion.button>
               ))}
               
+              {/* Sound Toggle */}
+              <GlowingBorder glowColor="green">
+                <motion.button
+                  onClick={() => {
+                    playClick();
+                    toggleSound();
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onHoverStart={playHover}
+                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                  title={isSoundEnabled ? 'Disable Sound' : 'Enable Sound'}
+                >
+                  {isSoundEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
+                </motion.button>
+              </GlowingBorder>
+              
               {/* Theme Toggle */}
-              <motion.button
-                onClick={toggleDarkMode}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-              >
-                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </motion.button>
+              <GlowingBorder glowColor="purple">
+                <motion.button
+                  onClick={() => {
+                    playClick();
+                    toggleDarkMode();
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onHoverStart={playHover}
+                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                >
+                  {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+                </motion.button>
+              </GlowingBorder>
             </div>
 
             {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center space-x-4">
               <motion.button
-                onClick={toggleDarkMode}
+                onClick={() => {
+                  playClick();
+                  toggleSound();
+                }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onHoverStart={playHover}
+                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+                title={isSoundEnabled ? 'Disable Sound' : 'Enable Sound'}
+              >
+                {isSoundEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
+              </motion.button>
+              
+              <motion.button
+                onClick={() => {
+                  playClick();
+                  toggleDarkMode();
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onHoverStart={playHover}
                 className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
               >
                 {darkMode ? <Sun size={20} /> : <Moon size={20} />}
               </motion.button>
               
               <motion.button
-                onClick={toggleMenu}
+                onClick={() => {
+                  playClick();
+                  toggleMenu();
+                }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onHoverStart={playHover}
                 className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
               >
                 {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -115,6 +166,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   onClick={() => scrollToSection(item.href)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onHoverStart={playHover}
                   className="block w-full text-left text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 py-2"
                 >
                   {item.label}

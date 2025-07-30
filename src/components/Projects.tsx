@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {ExternalLink, Github, X, Code, Smartphone, Globe, Database, Music} from 'lucide-react';
+import TiltCard from './effects/TiltCard';
+import GlowingBorder from './effects/GlowingBorder';
+import { useSoundEffects } from './effects/SoundProvider';
+import { useStaggerAnimation } from './effects/GSAPAnimations';
 
 interface Project {
   id: number;
@@ -17,6 +21,10 @@ interface Project {
 
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const { playClick, playHover } = useSoundEffects();
+  
+  // GSAP animations
+  useStaggerAnimation('.project-card', 0.2);
 
   const projects: Project[] = [
     {
@@ -111,67 +119,82 @@ const Projects: React.FC = () => {
         >
           <AnimatePresence>
             {projects.map((project, index) => (
-              <motion.div
+              <TiltCard
                 key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                onClick={() => setSelectedProject(project)}
-                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border border-gray-200/20 dark:border-gray-700/20"
+                className="project-card"
+                options={{ max: 15, scale: 1.02 }}
               >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <project.icon className="text-white" size={24} />
-                  </div>
-                </div>
+                <GlowingBorder glowColor="blue">
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ y: -10 }}
+                    onClick={() => {
+                      playClick();
+                      setSelectedProject(project);
+                    }}
+                    onHoverStart={playHover}
+                    className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border border-gray-200/20 dark:border-gray-700/20"
+                  >
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      <div className="absolute top-4 right-4">
+                        <project.icon className="text-white" size={24} />
+                      </div>
+                    </div>
 
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
+                        {project.description}
+                      </p>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 3 && (
-                      <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full text-sm font-medium">
-                        +{project.technologies.length - 3} more
-                      </span>
-                    )}
-                  </div>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.technologies.slice(0, 3).map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {project.technologies.length > 3 && (
+                          <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full text-sm font-medium">
+                            +{project.technologies.length - 3} more
+                          </span>
+                        )}
+                      </div>
 
-                  <div className="flex gap-4">
-                    <motion.a
-                      href={project.githubUrl}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-                    >
-                      <Github size={16} />
-                      Code
-                    </motion.a>
-                  </div>
-                </div>
-              </motion.div>
+                      <div className="flex gap-4">
+                        <motion.a
+                          href={project.githubUrl}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            playClick();
+                          }}
+                          onHoverStart={playHover}
+                          className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                        >
+                          <Github size={16} />
+                          Code
+                        </motion.a>
+                      </div>
+                    </div>
+                  </motion.div>
+                </GlowingBorder>
+              </TiltCard>
             ))}
           </AnimatePresence>
         </motion.div>
@@ -199,12 +222,19 @@ const Projects: React.FC = () => {
                     alt={selectedProject.title}
                     className="w-full h-64 object-cover"
                   />
-                  <button
-                    onClick={() => setSelectedProject(null)}
-                    className="absolute top-4 right-4 p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors duration-200"
-                  >
-                    <X size={20} />
-                  </button>
+                  <GlowingBorder glowColor="pink">
+                    <button
+                      onClick={() => {
+                        playClick();
+                        setSelectedProject(null);
+                      }}
+                      onMouseEnter={playHover}
+                      className="absolute top-4 right-4 p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors duration-200"
+                    >
+                      <X size={20} />
+                    </button>
+                  </GlowingBorder>
+                  </div>
                 </div>
 
                 <div className="p-8">
@@ -250,15 +280,19 @@ const Projects: React.FC = () => {
                   </div>
 
                   <div className="flex gap-4">
-                    <motion.a
-                      href={selectedProject.githubUrl}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-gray-700 text-white rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200"
-                    >
-                      <Github size={20} />
-                      View Code
-                    </motion.a>
+                    <GlowingBorder glowColor="green">
+                      <motion.a
+                        href={selectedProject.githubUrl}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={playClick}
+                        onHoverStart={playHover}
+                        className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-gray-700 text-white rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200"
+                      >
+                        <Github size={20} />
+                        View Code
+                      </motion.a>
+                    </GlowingBorder>
                   </div>
                 </div>
               </motion.div>
