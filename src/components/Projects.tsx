@@ -234,7 +234,6 @@ const Projects: React.FC = () => {
                       <X size={20} />
                     </button>
                   </GlowingBorder>
-                  </div>
                 </div>
 
                 <div className="p-8">

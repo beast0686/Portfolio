@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import FloatingElements from './components/FloatingElements';
+import { SoundProvider } from './components/effects/SoundProvider';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -32,47 +33,49 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-950 transition-all duration-500 relative">
-      {/* Floating Elements Layer */}
-      <FloatingElements />
-      
-      {/* Navigation */}
-      <Navigation 
-        darkMode={darkMode}
-        toggleDarkMode={toggleDarkMode}
-        isMenuOpen={isMenuOpen}
-        toggleMenu={toggleMenu}
-      />
+    <SoundProvider>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-950 transition-all duration-500 relative">
+        {/* Floating Elements Layer */}
+        <FloatingElements />
+        
+        {/* Navigation */}
+        <Navigation 
+          darkMode={darkMode}
+          toggleDarkMode={toggleDarkMode}
+          isMenuOpen={isMenuOpen}
+          toggleMenu={toggleMenu}
+        />
 
-      {/* Main Content */}
-      <main className="relative z-10">
-        <section id="home">
-          <Hero />
-        </section>
-        
-        <section id="skills">
-          <Skills />
-        </section>
-        
-        <section id="education">
-          <Education />
-        </section>
-        
-        <section id="experience">
-          <Experience />
-        </section>
-        
-        <section id="projects">
-          <Projects />
-        </section>
-        
-        <section id="contact">
-          <Contact />
-        </section>
-      </main>
+        {/* Main Content */}
+        <main className="relative z-10">
+          <section id="home">
+            <Hero />
+          </section>
+          
+          <section id="skills">
+            <Skills />
+          </section>
+          
+          <section id="education">
+            <Education />
+          </section>
+          
+          <section id="experience">
+            <Experience />
+          </section>
+          
+          <section id="projects">
+            <Projects />
+          </section>
+          
+          <section id="contact">
+            <Contact />
+          </section>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </SoundProvider>
   );
 }
 

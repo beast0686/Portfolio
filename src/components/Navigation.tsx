@@ -52,7 +52,7 @@ const Navigation: React.FC<NavigationProps> = ({
               whileHover={{ scale: 1.05 }}
               className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
             >
-              My Portfolio
+              Portfolio
             </motion.div>
 
             {/* Desktop Menu */}
@@ -69,7 +69,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   {item.label}
                 </motion.button>
               ))}
-              
+
               {/* Sound Toggle */}
               <GlowingBorder glowColor="green">
                 <motion.button
@@ -86,7 +86,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   {isSoundEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
                 </motion.button>
               </GlowingBorder>
-              
+
               {/* Theme Toggle */}
               <GlowingBorder glowColor="purple">
                 <motion.button
@@ -119,7 +119,7 @@ const Navigation: React.FC<NavigationProps> = ({
               >
                 {isSoundEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
               </motion.button>
-              
+
               <motion.button
                 onClick={() => {
                   playClick();
@@ -132,7 +132,7 @@ const Navigation: React.FC<NavigationProps> = ({
               >
                 {darkMode ? <Sun size={20} /> : <Moon size={20} />}
               </motion.button>
-              
+
               <motion.button
                 onClick={() => {
                   playClick();

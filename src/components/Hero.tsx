@@ -184,7 +184,7 @@ const Hero: React.FC = () => {
                   <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center text-6xl">
                     <img src={Profile} alt="Profile Picture" className="w-full h-full object-cover rounded-full" />
                   </div>
-                </div>
+                </motion.div>
               </GlowingBorder>
             </TiltCard>
           </motion.div>
