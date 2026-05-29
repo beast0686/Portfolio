@@ -1,65 +1,67 @@
-# My Portfolio Website - Overview 🚀
+# Aman Soudagar - Professional Portfolio
 
-This repository contains the open-source version of my personal portfolio website.  
-Feel free to explore the code and use it for learning and inspiration.
+A high-performance, interactive 3D portfolio showcasing the work and experience of Aman Soudagar, a Full Stack Developer and AI Engineer.
 
----
+## 🚀 Features
 
-## ⚠️ Usage Notice
+- **Interactive 3D Experience**: Built with React Three Fiber and Three.js, featuring a character model and dynamic physics-based tech stack visualization using Rapier.
+- **Smooth Animations**: Powered by GSAP (GreenSock Animation Platform) for high-quality transitions, split-text effects, and scroll-triggered animations.
+- **Modern Tech Stack**: Developed with React 18, TypeScript, and Vite for a fast and type-safe development experience.
+- **Responsive Design**: Fully optimized for various screen sizes, ensuring a seamless experience across desktop and mobile devices.
+- **Smooth Scrolling**: Implemented using GSAP ScrollSmoother for a premium feel.
 
-This project is shared for learning purposes only.
+## 🛠️ Built With
 
-Please do NOT:
-- Clone or replicate the full website or design
-- Repost it with minor content changes
-- Use this project for commercial/client work
-- Create tutorials or content using this exact project
+- **Frontend**: [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **3D Engine**: [Three.js](https://threejs.org/), [@react-three/fiber](https://github.com/pmndrs/react-three-fiber)
+- **Physics**: [@react-three/rapier](https://github.com/pmndrs/react-three-rapier)
+- **Animation**: [GSAP](https://greensock.com/gsap/)
+- **Styling**: Vanilla CSS
 
-If you use parts of the code, you must provide proper credit linking back to the original repository.
+## 📦 Project Structure
 
-Build your own version — don’t just copy.
+- `src/components`: React components for each section (About, Work, Career, etc.)
+- `src/components/Character`: 3D character logic and scene setup.
+- `src/components/styles`: Component-specific CSS files.
+- `src/assets`: Static assets and media.
+- `public/models`: 3D models and environment maps.
 
-— Moncy Yohannan
+## 📥 Getting Started
 
----
+### Prerequisites
 
-## 🛠️ Instructions
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [npm](https://www.npmjs.com/)
 
-I have modified the GSAP Club plugins using trial versions.  
-⚠️ Note: Trial plugins cannot be used for production or hosting.
+### Installation
 
-For official GSAP Club plugins, refer here:  
-https://gsap.com/docs/v3/Installation/
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/beast0686/portfolio.git
+   ```
 
----
+2. Navigate to the project directory:
+   ```bash
+   cd portfolio
+   ```
 
-## ⚙️ Tech Stack
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-React • TypeScript • GSAP • Three.js • WebGL • HTML • CSS • JavaScript
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
----
+## 📜 License
 
-## 🎨 Assets Usage
+Distributed under the MIT License. See `LICENSE` for more information.
 
-Some 3D assets included in this repository are free to use for learning purposes.
+## 📧 Contact
 
-However:
+Aman Soudagar - [amansoudagar202@gmail.com](mailto:amansoudagar202@gmail.com)
 
-- The original 3D avatar used on my live portfolio is NOT included in this repository
-- That avatar is a custom asset created over ~1 month
-- It is not open source and not available for reuse
-
-Any usage, extraction, or redistribution of that avatar from my live website is strictly prohibited.
-
----
-
-![Protfolio-Preview](https://github.com/user-attachments/assets/3c4557e7-6392-4928-b8a9-7b2476ef4edd)
-
----
-
-## 📄 License
-
-This project is licensed under the Personal Portfolio License (PPL) v1.0.
-
-See the LICENSE file for full details
-
+Project Link: [https://github.com/beast0686/portfolio](https://github.com/beast0686/portfolio)
