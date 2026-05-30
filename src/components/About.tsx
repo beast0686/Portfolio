@@ -6,7 +6,7 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          I am a Full Stack Developer and AI Engineer dedicated to building intelligent, scalable solutions at the intersection of web technology and artificial intelligence. My expertise lies in architecting robust platforms and developing advanced RAG-based semantic search systems. My experience ranges from revamping complex B2B business models to engineering real-time AI dashboards that drive efficiency and accuracy. I am passionate about leveraging Knowledge Graphs, LLMs, and modern web frameworks to solve real-world problems and deliver seamless user experiences.
+          Passionate and detail-oriented Software Engineer with a strong foundation in programming, problem-solving, and system design. Adept at collaborating in team settings, with hands-on experience from academic projects. Passionate about learning new technologies and eager to contribute to innovative software solutions. Ready to apply theoretical knowledge in real-world applications and grow within a dynamic tech environment.
         </p>
       </div>
     </div>
