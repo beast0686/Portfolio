@@ -95,9 +95,9 @@ body {
   width: 100%;
   position: relative;
   height: var(--vh);
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: -100px;
+  margin: 140px auto 0;
+  padding-bottom: 40px;
+  z-index: 0;
 }
 
 .techstack h2 {
@@ -105,10 +105,11 @@ body {
   text-align: center;
   position: absolute;
   width: 100%;
-  top: 120px;
+  top: 40px;
   left: 0;
   font-weight: 400;
   text-transform: uppercase;
+  z-index: 1;
 }
 
 @media screen and (min-width: 768px) {
