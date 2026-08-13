@@ -1,27 +1,33 @@
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
 import "./styles/Navbar.css";
 
-gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
-export let smoother: ScrollSmoother;
+gsap.registerPlugin(ScrollTrigger);
+export let lenis: Lenis;
 
 const Navbar = () => {
   useEffect(() => {
-    smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1.7,
-      speed: 1.7,
-      effects: true,
-      autoResize: true,
-      ignoreMobileResize: true,
+    // ponytail: Lenis on window (default) — no wrapper/content needed.
+    // ScrollSmoother needed wrapper/content; Lenis doesn't.
+    // This lets ScrollTrigger pin: true work naturally against window scroll.
+    lenis = new Lenis({
+      lerp: 0.06,
+      duration: 1.7,
+      smoothWheel: true,
     });
 
-    smoother.scrollTop(0);
-    smoother.paused(true);
+    // ponytail: bridge Lenis → GSAP ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    lenis.scrollTo(0, { immediate: true });
+    lenis.stop();
 
     let links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {
@@ -29,14 +35,13 @@ const Navbar = () => {
       element.addEventListener("click", (e) => {
         if (window.innerWidth > 1024) {
           e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
+          let section = (e.currentTarget as HTMLAnchorElement).getAttribute("data-href");
+          if (section) lenis.scrollTo(section);
         }
       });
     });
     window.addEventListener("resize", () => {
-      ScrollSmoother.refresh(true);
+      ScrollTrigger.refresh(true);
     });
   }, []);
   return (

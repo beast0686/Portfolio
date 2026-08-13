@@ -97,7 +97,7 @@ body {
   height: var(--vh);
   margin: 140px auto 0;
   padding-bottom: 40px;
-  z-index: 0;
+  z-index: 1; /* ponytail: match Work section z-index so TechStack doesn't render behind pinned Work */
 }
 
 .techstack h2 {
@@ -121,4 +121,18 @@ body {
   .techstack h2 {
     font-size: 40px;
   }
+}
+
+/* ponytail: Lenis smooth scroll base styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }

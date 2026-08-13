@@ -1,13 +1,13 @@
+import { useLayoutEffect } from "react";
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 const Work = () => {
-  useGSAP(() => {
+  useLayoutEffect(() => { // ponytail: replaces useGSAP — same cleanup pattern
     let translateX: number = 0;
 
     function setTranslateX() {
