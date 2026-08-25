@@ -21,7 +21,7 @@ const Career = () => {
               <h3>NOW</h3>
             </div>
             <p>
-              Architectural revamp of oazri.com to enhance platform scalability and user experience. Built a secure checkout system by integrating the AmwalPay payment gateway. Working on the Oazri B2B Business model.
+              Architectural revamp of oazri.com to enhance platform scalability and user experience. Designed and developed a cross-platform mobile application for both iOS and Android, along with the Oazri B2B Business model for Government Offices and Educational Institutions. Developed an Intelligent Document Processing and Verification System for the Distribution Code Review Panel (DCRP). Currently developing an automated AI workflow to instantly detect faulty electric meter installations for BluField.
             </p>
           </div>
           <div className="career-info-box">
